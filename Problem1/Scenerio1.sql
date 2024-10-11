@@ -74,9 +74,7 @@ UPDATE courses
 SET course_description = 'Introduction to Physics'
 WHERE course_name = 'Physics 101';
 
--- this script retrieves the full names (by full name we mean the first name and last name joined into one column, separated by a space) of all students enrolled in “Physics 101”.
-SELECT first_name || ' ' || last_name AS full_name
-FROM students
-JOIN enrollments ON students.id = enrollments.student_id
-JOIN courses ON enrollments.course_id = courses.id
-WHERE courses.course_name = 'Physics 101';
+UPDATE courses
+SET professor_id = 3
+WHERE course_name = 'Physics 101';
+
