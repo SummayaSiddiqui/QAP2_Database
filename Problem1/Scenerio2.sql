@@ -89,3 +89,11 @@ JOIN customers ON orders.customer_id = customers.id
 JOIN order_items ON orders.id = order_items.order_id
 JOIN products ON order_items.product_id = products.id
 WHERE first_name = 'Alice' AND last_name = 'Johnson'; 
+
+-- Simulate reducing stock for Order # 1
+UPDATE products
+SET stock_quantity = stock_quantity - order_items.quantity
+From order_items
+JOIN orders ON order_items.order_id = orders.id
+WHERE orders.id = 1
+AND products.id = order_items.product_id;
