@@ -69,3 +69,23 @@ VALUES
     (3, 5, 5),  -- Order 3: 5 USB Cables
     (4, 2, 1),  -- Order 4: 1 Smartphone
     (4, 3, 3);  -- Order 4: 3 Headphones
+
+-- This script retrieves names and stock quantities of all products
+SELECT product_name, stock_quantity FROM products;
+
+-- This script retrieves the product names and quantities for one of the orders placed.
+SELECT product_name, quantity
+FROM products
+JOIN order_items ON products.id = order_items.product_id
+JOIN orders ON order_items.order_id = orders.id
+JOIN customers ON orders.customer_id = customers.id
+WHERE orders.id = 3; 
+
+-- This script retrieves all orders placed by a specific customer (including the ID’s of what was ordered and the quantities).
+SELECT first_name || ' ' || last_name AS full_name,
+orders.id AS order_id, order_items.product_id, products.product_name, order_items.quantity
+FROM orders
+JOIN customers ON orders.customer_id = customers.id
+JOIN order_items ON orders.id = order_items.order_id
+JOIN products ON order_items.product_id = products.id
+WHERE first_name = 'Alice' AND last_name = 'Johnson'; 
