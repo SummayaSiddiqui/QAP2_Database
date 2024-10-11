@@ -94,3 +94,8 @@ JOIN courses ON professors.id = courses.professor_id
 SELECT courses.id AS course_id, courses.course_name 
 FROM courses
 JOIN enrollments ON courses.id = enrollments.course_id
+
+-- This script updates one of the student's emails
+UPDATE students
+SET email = 'new.charlie.brown@example.com'
+WHERE first_name = 'Charlie' AND last_name = 'Brown'
