@@ -99,3 +99,8 @@ JOIN enrollments ON courses.id = enrollments.course_id
 UPDATE students
 SET email = 'new.charlie.brown@example.com'
 WHERE first_name = 'Charlie' AND last_name = 'Brown'
+
+-- This script removes a student from one of their courses
+DELETE FROM enrollments
+WHERE student_id = (SELECT student_id FROM students WHERE first_name = 'Eve' AND last_name = 'Taylor')
+AND course_id = (SELECT course_id FROM courses WHERE course_name = 'Calculus');
