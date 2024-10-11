@@ -64,3 +64,12 @@ VALUES
 (3, 2, '2023-09-02'),  -- Charlie in Calculus
 (4, 3, '2023-09-03'),  -- Daisy in Modern History
 (5, 2, '2023-09-02');  -- Eve in Calculus
+
+-- This script alters data into 'courses' table
+UPDATE courses
+SET course_name = 'Physics 101'
+WHERE id = 3;
+
+UPDATE courses
+SET course_description = 'Introduction to Physics'
+WHERE course_name = 'Physics 101';
