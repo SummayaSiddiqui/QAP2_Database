@@ -78,3 +78,19 @@ UPDATE courses
 SET professor_id = 3
 WHERE course_name = 'Physics 101';
 
+-- this script retrieves the full names (by full name we mean the first name and last name joined into one column, separated by a space) of all students enrolled in “Physics 101”.
+SELECT first_name || ' ' || last_name AS full_name
+FROM students
+JOIN enrollments ON students.id = enrollments.student_id
+JOIN courses ON enrollments.course_id = courses.id
+WHERE courses.course_name = 'Physics 101';
+
+-- This script retrieves a list of all courses along with the professor’s full name who teaches each course.
+SELECT first_name || ' ' || last_name AS professor_full_name, course_name
+FROM professors
+JOIN courses ON professors.id = courses.professor_id
+
+-- This script retrieves all courses that have students enrolled in them.
+SELECT courses.id AS course_id, courses.course_name 
+FROM courses
+JOIN enrollments ON courses.id = enrollments.course_id
